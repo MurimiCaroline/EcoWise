@@ -1,10 +1,32 @@
+import 'package:eco_wise/src/Features/auth/firebase_auth_implementation/firebase_auth_services.dart';
 import 'package:eco_wise/src/Features/auth/screen/homepage.dart';
 import 'package:eco_wise/src/Features/auth/screen/signup.dart';
 import 'package:eco_wise/src/Features/auth/screen/widgets/form_container_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class LogInPage extends StatelessWidget {
+class LogInPage extends StatefulWidget {
   const LogInPage({super.key});
+
+  @override
+  State<LogInPage> createState() => _LogInPageState();
+}
+
+class _LogInPageState extends State<LogInPage> {
+
+final FirebaseAuthService _auth = FirebaseAuthService();
+
+ 
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+@override
+  void dispose() {
+   _emailController.dispose();
+   _passwordController.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,19 +46,19 @@ class LogInPage extends StatelessWidget {
                 height: 30,
                 ),
                 FormContainerWidget(
+                  controller: _emailController,
                   hintText: "Email",
                   isPasswordField: false,
                 ),
                 SizedBox(height: 10),
                 FormContainerWidget(
+                  controller: _passwordController,
                   hintText: "Password",
                   isPasswordField: true,
                   ),
                 SizedBox(height: 30,),
                   GestureDetector(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder:(context)=> HomePage() ));
-                    },
+                    onTap: _signIn,
                     child: Container(
                       width: double.infinity,
                       height: 45,
@@ -78,4 +100,24 @@ class LogInPage extends StatelessWidget {
       ),
     );
   }
+
+
+void _signIn() async {
+   
+    String email = _emailController.text;
+    String password = _passwordController.text;
+
+    User? user = await _auth.signInWithEmailAndPassword(email, password);
+
+if (user != null) {
+     print("User is successfully signed in");
+     Navigator.pushNamed(context, "/home");
+
+    } else {
+      print("Some error happend");
+    }
+
+}
+
+
 }

@@ -1,3 +1,4 @@
+import 'package:eco_wise/src/Features/auth/screen/homepage.dart';
 import 'package:eco_wise/src/Features/auth/screen/login.dart';
 import 'package:eco_wise/src/Features/splash/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,6 +34,10 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(
         child: LogInPage(),
       ),
+      routes: {
+        '/home': (context) => HomePage(),
+        '/logIn' : (context) => LogInPage(),
+      },
     );
   }
 }
