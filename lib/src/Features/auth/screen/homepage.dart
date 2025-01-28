@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Column(
         children: [
+          Image.asset('assets/images/icon.jpeg'),
           Center(
             child: Text("Welcome to Ecowise Home"),
                   ),
@@ -26,14 +27,38 @@ class HomePage extends StatelessWidget {
                       height: 45,
                       width: 100,
                       decoration: BoxDecoration(
-                        color: Colors.amber,
+                        color: Colors.blueAccent,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Center(
                         child: Text(
                           "Sign Out",
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
+
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  GestureDetector(
+                    onTap: () {
+                      
+                      Navigator.pushNamed(context, "/inputForm");
+                    },
+                    child: Container(
+                      height: 45,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.blueAccent,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Proceed to  Energy Audit",
+                          style: TextStyle(
+                            color: Colors.white,
 
                           ),
                         ),

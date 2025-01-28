@@ -24,13 +24,22 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: Text("WELCOME TO ECOWISE",
-        style: TextStyle(
-          color: Colors.amber,
-        fontWeight: FontWeight.bold,
-        ),)
-         ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image(image: AssetImage('assets/images/icon.jpeg'),
+         height: 200,
+         width: 200,
+          ),
+          Text("WELCOME TO ECOWISE",
+          style: TextStyle(
+            color: Colors.amber,
+          fontWeight: FontWeight.bold,
+          ),
+          ),
+          
+        ],
+      ),
     );
   }
 }
