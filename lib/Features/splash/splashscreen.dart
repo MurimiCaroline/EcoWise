@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../auth/screen/login.dart';
+
 
 class SplashScreen extends StatefulWidget {
   final Widget? child;
@@ -26,8 +26,9 @@ class _SplashScreenState extends State<SplashScreen> {
     return const Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image(image: AssetImage('assets/images/icon.jpeg'),
+          Image(image: AssetImage('assets/images/icon.png'),
          height: 200,
          width: 200,
           ),

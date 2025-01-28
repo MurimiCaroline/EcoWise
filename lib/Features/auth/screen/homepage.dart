@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,12 +11,18 @@ class HomePage extends StatelessWidget {
         title: Text("HomePage"),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/images/icon.jpeg'),
+         Image(image: AssetImage('assets/images/icon.png'),
+         height: 200,
+         width: 200,
+          ),
+          
           Center(
             child: Text("Welcome to Ecowise Home"),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 40,),
                   GestureDetector(
                     onTap: () {
                       FirebaseAuth.instance.signOut();
@@ -45,7 +50,7 @@ class HomePage extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       
-                      Navigator.pushNamed(context, "/inputForm");
+                      Navigator.pushNamed(context, "/dashboard");
                     },
                     child: Container(
                       height: 45,

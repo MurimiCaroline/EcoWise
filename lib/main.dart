@@ -1,7 +1,9 @@
-import 'package:eco_wise/src/Features/auth/screen/homepage.dart';
-import 'package:eco_wise/src/Features/auth/screen/login.dart';
-import 'package:eco_wise/src/Features/splash/splashscreen.dart';
-import 'package:eco_wise/src/Features/user%20data/input_form.dart';
+import 'package:eco_wise/Core/constants/colours.dart';
+import 'package:eco_wise/Features/auth/screen/homepage.dart';
+import 'package:eco_wise/Features/auth/screen/login.dart';
+import 'package:eco_wise/Features/dashboard/dashboard.dart';
+import 'package:eco_wise/Features/splash/splashscreen.dart';
+import 'package:eco_wise/Features/user%20data/input_form.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +31,8 @@ class MyApp extends StatelessWidget {
        debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+               scaffoldBackgroundColor: backgroundColor,
+               brightness: Brightness.dark,
         useMaterial3: true,
       ),
       home: const SplashScreen(
@@ -39,6 +42,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => HomePage(),
         '/logIn' : (context) => LogInPage(),
         '/inputForm' : (context) => InputForm(),
+         '/dashboard' : (context) => Dashboard(),
         
 
       },

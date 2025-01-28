@@ -1,7 +1,7 @@
-import 'package:eco_wise/src/Features/auth/firebase_auth_implementation/firebase_auth_services.dart';
-import 'package:eco_wise/src/Features/auth/screen/homepage.dart';
-import 'package:eco_wise/src/Features/auth/screen/signup.dart';
-import 'package:eco_wise/src/Features/auth/screen/widgets/form_container_widget.dart';
+import 'package:eco_wise/Core/constants/colours.dart';
+import 'package:eco_wise/Features/auth/firebase_auth_implementation/firebase_auth_services.dart';
+import 'package:eco_wise/Features/auth/screen/signup.dart';
+import 'package:eco_wise/Features/auth/screen/widgets/form_container_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +33,7 @@ final FirebaseAuthService _auth = FirebaseAuthService();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Log In"),
-        backgroundColor: Colors.amber,
+        backgroundColor:cardBackgroundColor,
       ),
       body:  Center(
         child: Padding(
@@ -63,7 +63,7 @@ final FirebaseAuthService _auth = FirebaseAuthService();
                       width: double.infinity,
                       height: 45,
                       decoration: BoxDecoration(
-                        color: Colors.amber,
+                        color: cardBackgroundColor,
                         borderRadius: BorderRadius.circular(10),),
                         child: Center(child: Text("Log In", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),)),
                     ),
