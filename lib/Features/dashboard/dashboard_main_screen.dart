@@ -1,20 +1,31 @@
-import 'package:eco_wise/Core/constants/colours.dart';
+
+import 'package:eco_wise/Util/responsive.dart';
+import 'package:eco_wise/Widgets/summary_widget.dart';
+import 'package:eco_wise/widgets/dashboard_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../General Widgets/side_menu_widgets.dart';
+import '../../widgets/side_menu_widgets.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isDesktop = Responsive.isDesktop(context);
+
+    
     return Scaffold(
-      appBar: AppBar(
+      drawer: !isDesktop ? SizedBox(
+      width: 250,
+      child: SideMenuWidget(),
+      ) : null,
+            appBar: AppBar(
         title: Text('Dashboard UI'),
       ),
       body: SafeArea(
         child: Row(
           children: [
+            if(isDesktop)
             Expanded(
               flex: 2,
               child:SizedBox(
@@ -23,15 +34,14 @@ class Dashboard extends StatelessWidget {
               ),
               Expanded(
               flex: 7,
-              child: Container(
-                color: primaryColor,
+              child: DashboardWidget(
+               
               ),
               ),
+               if(isDesktop)
               Expanded(
               flex: 3,
-              child: Container(
-                color: Colors.red,
-              ),
+              child: SummaryWidget(),
               ),
           ],
         ),
