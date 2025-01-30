@@ -19,9 +19,14 @@ class Dashboard extends StatelessWidget {
       width: 250,
       child: SideMenuWidget(),
       ) : null,
-            appBar: AppBar(
-        title: Text('Dashboard UI'),
-      ),
+      //       appBar: AppBar(
+      //   title: Text('Dashboard UI'),
+      // ),
+      endDrawer: Responsive.isMobile(context) ? 
+      SizedBox(
+        width: MediaQuery.of(context).size.width * 0.8,
+        child: SummaryWidget(),
+      ) : null,
       body: SafeArea(
         child: Row(
           children: [

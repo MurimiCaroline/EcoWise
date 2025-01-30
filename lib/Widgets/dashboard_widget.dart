@@ -13,7 +13,7 @@ class DashboardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18),
+        padding: const EdgeInsets.symmetric(horizontal: 5),
         child: Column(
           children: [
             SizedBox(height:18),

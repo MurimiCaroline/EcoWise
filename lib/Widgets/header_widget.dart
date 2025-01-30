@@ -51,13 +51,31 @@ class HeaderWidget extends StatelessWidget {
           ),
         ),
         if(Responsive.isMobile(context))
-        IconButton(onPressed: (){
+        Row(
+          children: [
+            IconButton(onPressed: (){
 
-        }, icon: Icon(
-          Icons.search,
-          color: Colors.grey,
-          size: 25,
-        ))   
+            }, icon: Icon(
+              Icons.search,
+              color: Colors.grey,
+              size: 25,
+            ),
+            
+            ),
+            InkWell(
+          onTap: () => Scaffold.of(context).openEndDrawer(),
+                child: CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  child: Image.asset(
+                    "assets/images/icon.png",
+                    width: 32,
+                  ),
+                ),
+        ),
+          ],
+        ),
+        
+          
       ],
     );
   }
