@@ -1,4 +1,5 @@
 
+import 'package:eco_wise/Util/responsive.dart';
 import 'package:eco_wise/data/bar_graph_data.dart';
 import 'package:eco_wise/model/graph_model.dart';
 import 'package:eco_wise/Widgets/custom_card_widget.dart';
@@ -16,8 +17,8 @@ class BarGraphCard extends StatelessWidget {
       itemCount: barGraphData.data.length,
       shrinkWrap: true,
       physics: const ScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: Responsive.isMobile(context) ? 2 : 4,
         crossAxisSpacing: 15,
         mainAxisSpacing: 12.0,
         childAspectRatio: 5 / 4,

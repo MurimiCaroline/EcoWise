@@ -1,4 +1,5 @@
 import 'package:eco_wise/Core/constants/colours.dart';
+import 'package:eco_wise/Util/responsive.dart';
 import 'package:eco_wise/data/side_menu_data.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
   Widget build(BuildContext context) {
     final data = SideMenuData();
     return  Container(
-      padding: EdgeInsets.symmetric(horizontal: 80, vertical: 20),
+      padding: EdgeInsets.symmetric(horizontal: Responsive.isMobile(context) ? 40 : 80, vertical: 20),
       child: ListView.builder(
         itemCount: data.menu.length,
         itemBuilder: (context, index) => buildMenuEntry(data, index),

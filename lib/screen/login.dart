@@ -1,7 +1,7 @@
 import 'package:eco_wise/Core/constants/colours.dart';
-import 'package:eco_wise/Features/auth/firebase_auth_implementation/firebase_auth_services.dart';
-import 'package:eco_wise/Features/auth/screen/signup.dart';
-import 'package:eco_wise/Features/auth/screen/widgets/form_container_widget.dart';
+import 'package:eco_wise/auth/firebase_auth_implementation/firebase_auth_services.dart';
+import 'package:eco_wise/screen/signup.dart';
+import 'package:eco_wise/Widgets/form_container_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
