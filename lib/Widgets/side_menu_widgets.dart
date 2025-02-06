@@ -16,7 +16,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
   Widget build(BuildContext context) {
     final data = SideMenuData();
     return  Container(
-      padding: EdgeInsets.symmetric(horizontal: Responsive.isMobile(context) ? 40 : 80, vertical: 20),
+      padding: EdgeInsets.symmetric(horizontal: Responsive.isMobile(context) ? 40 : 60, vertical: 20),
       child: ListView.builder(
         itemCount: data.menu.length,
         itemBuilder: (context, index) => buildMenuEntry(data, index),

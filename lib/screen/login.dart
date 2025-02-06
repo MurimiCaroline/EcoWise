@@ -83,6 +83,7 @@ final FirebaseAuthService _auth = FirebaseAuthService();
                         MaterialPageRoute(builder: (context) => SignUpPage()),
                             (route) => false,
                       );
+                       
                     },
                     child: Text(
                       "Sign Up",
