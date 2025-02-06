@@ -1,5 +1,5 @@
 import 'package:eco_wise/Core/constants/colours.dart';
-// import 'package:eco_wise/Widgets/pie_chart_widget.dart';
+import 'package:eco_wise/Widgets/pie_chart_widget.dart';
 import 'package:eco_wise/Widgets/scheduled_widget.dart';
 import 'package:eco_wise/Widgets/summary_details.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +27,7 @@ class SummaryWidget extends StatelessWidget {
             SummaryDetails(),
             SizedBox(height: 40),
             Scheduled(),
+            Chart(),
           ],
         ),
       ),
