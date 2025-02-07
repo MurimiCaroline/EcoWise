@@ -70,7 +70,7 @@ class HeaderWidget extends StatelessWidget {
                 child: CircleAvatar(
                   backgroundColor: Colors.transparent,
                   child: Image.asset(
-                    "assets/images/icon.png",
+                    "assets/images/ic_launcher.png",
                     width: 32,
                   ),
                 ),

@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image(image: AssetImage('assets/images/icon.png'),
+          Image(image: AssetImage('assets/images/ic_launcher.png'),
          height: 200,
          width: 200,
           ),

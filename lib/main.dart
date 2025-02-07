@@ -2,7 +2,7 @@ import 'package:eco_wise/Core/constants/colours.dart';
 import 'package:eco_wise/screen/homepage.dart';
 import 'package:eco_wise/screen/login.dart';
 import 'package:eco_wise/screen/dashboard_main_screen.dart';
-import 'package:eco_wise/Features/splash/splashscreen.dart';
+import 'package:eco_wise/screen/splashscreen.dart';
 import 'package:eco_wise/Widgets/input_form.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
