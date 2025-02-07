@@ -1,3 +1,4 @@
+import 'package:eco_wise/screen/homepage.dart';
 import 'package:flutter/material.dart';
 
 
@@ -24,23 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Image(image: AssetImage('assets/images/ic_launcher.png'),
-         height: 200,
-         width: 200,
-          ),
-          Text("WELCOME TO ECOWISE",
-          style: TextStyle(
-            color: Colors.amber,
-          fontWeight: FontWeight.bold,
-          ),
-          ),
-          
-        ],
-      ),
+      
     );
   }
 }

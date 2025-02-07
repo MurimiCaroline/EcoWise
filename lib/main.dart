@@ -35,9 +35,7 @@ class MyApp extends StatelessWidget {
                brightness: Brightness.dark,
         useMaterial3: true,
       ),
-      home: const SplashScreen(
-        child: LogInPage(),
-      ),
+      home: HomePage(),
       routes: {
         '/home': (context) => HomePage(),
         '/logIn' : (context) => LogInPage(),
