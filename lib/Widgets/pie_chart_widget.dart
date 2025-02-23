@@ -30,7 +30,7 @@ class Chart extends StatelessWidget {
               children: [
                 const SizedBox(height: defaultPadding),
                 Text(
-                  "70%",
+                  "61.8%",
                   style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,

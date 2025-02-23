@@ -56,17 +56,12 @@ class LineData {
     100: '10K'
   };
   final bottomTitle = {
-    0: 'Jan',
-    10: 'Feb',
-    20: 'Mar',
-    30: 'Apr',
-    40: 'May',
-    50: 'Jun',
-    60: 'Jul',
-    70: 'Aug',
-    80: 'Sep',
-    90: 'Oct',
-    100: 'Nov',
-    110: 'Dec',
+    0: 'Mon',
+    20: 'Tue',
+    40: 'Wed',
+    60: 'Thur',
+    80: 'Fri',
+    100: 'Sat',
+    
   };
 }

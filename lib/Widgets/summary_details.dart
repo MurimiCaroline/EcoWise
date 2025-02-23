@@ -12,9 +12,10 @@ class SummaryDetails extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          buildDetails('Lighting', '305kw'),
-          buildDetails('Charging', '10983kw'),
-          buildDetails('Heating', '7kw'),
+          buildDetails('Lighting', '50kw'),
+          buildDetails('Charging', '8kW'),
+          buildDetails('Heating', '63kw'),
+          buildDetails('Entertainment', '4kw'),
           
         ],
       ),

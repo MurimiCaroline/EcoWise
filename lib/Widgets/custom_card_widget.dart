@@ -17,7 +17,7 @@ class CustomCard extends StatelessWidget {
         color: color ?? cardBackgroundColor,
       ),
       child: Padding(
-        padding: padding ?? EdgeInsets.all(12.0),
+        padding: padding ?? EdgeInsets.all(8.0),
         child: child,
       ),
     );
