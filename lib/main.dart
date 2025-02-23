@@ -1,5 +1,5 @@
 import 'package:eco_wise/Core/constants/colours.dart';
-import 'package:eco_wise/screen/homepage.dart';
+import 'package:eco_wise/screen/homepage_screen.dart';
 import 'package:eco_wise/screen/login.dart';
 import 'package:eco_wise/screen/dashboard_main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';

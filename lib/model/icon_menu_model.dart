@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
-class MenuModel{
+
+
+class MenuModel {
   final IconData icon;
   final String title;
-  final Function() onTap;
+  final int? onTapWithIndex; // ✅ Now using index switching
 
-  const MenuModel({required this.icon, required this.title, required this.onTap});
+  const MenuModel({
+    required this.icon,
+    required this.title,
+    this.onTapWithIndex, // ✅ Supports Bottom Navigation Index
+  });
 }
-
