@@ -12,21 +12,21 @@ class AnalysisPieChart extends StatefulWidget {
 class _AnalysisPieChartState extends State<AnalysisPieChart> {
   @override
   Widget build(BuildContext context) {
-    final analysisPieChartData = AnalysisPieChartData();
+    final analysisPieChartData = AnalysisPieChartData(); // ✅ Create an instance
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-        Text('Usage Analysis'),
-        Expanded(
-          child: PieChart(PieChartData(
-            sectionsSpace: 0,
-                centerSpaceRadius: 0,
-                startDegreeOffset: -90,
-            sections: analysisPieChartData.paiChartSelectionDatas,
-          
+      children: [
+        const Text('Hostel A Usage Analysis'),
+        SizedBox(
+          height: 350,
+          child: PieChart(
+            PieChartData(
+              sectionsSpace: 0,
+              centerSpaceRadius: 40,
+              startDegreeOffset: -90,
+              sections: analysisPieChartData.getPieChartSections(), // ✅ Uses the new model
+            ),
           ),
-          ),
-        )
+        ),
       ],
     );
   }

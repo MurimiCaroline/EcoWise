@@ -14,6 +14,7 @@ Future main() async {
     apiKey: "AIzaSyCiy6Z0ajtirFAf0paYdNVhGYBQOfqamkk",
     appId: "1:1022578629737:web:54b5d134b4192d002d56f8", 
     messagingSenderId: "1022578629737",
+    databaseURL: "https://ecowise-2972a-default-rtdb.europe-west1.firebasedatabase.app" ,
     projectId: "ecowise-2972a"));
   }
   await Firebase.initializeApp();

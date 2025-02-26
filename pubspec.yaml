@@ -47,6 +47,8 @@ dev_dependencies:
     sdk: flutter
   fl_chart: ^0.66.1
   flutter_svg_provider: ^1.0.6
+  
+ 
 
 
 flutter_launcher_icons:

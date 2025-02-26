@@ -2,9 +2,7 @@
 import 'package:eco_wise/Util/responsive.dart';
 import 'package:eco_wise/Widgets/bar_graph_widget.dart';
 import 'package:eco_wise/Widgets/hostelcard.dart';
-
 import 'package:eco_wise/screen/summary_widget.dart';
-import 'package:eco_wise/widgets/activity_details_card.dart';
 import 'package:eco_wise/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +20,7 @@ class DashboardWidget extends StatelessWidget {
             const HeaderWidget(),
             const SizedBox(height: 18),
             const HostelName(),
-            const ActivityDetailsCard(),
+            // const ActivityDetailsCard(),
             const SizedBox(height: 18),
             // const LineChartCard(),
             const SizedBox(height: 18),
