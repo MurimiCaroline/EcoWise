@@ -1,12 +1,11 @@
 import 'package:eco_wise/Core/constants/colours.dart';
 import 'package:eco_wise/Util/responsive.dart';
 import 'package:eco_wise/Widgets/ai_recommendations_screen.dart';
-import 'package:eco_wise/Widgets/input_forn.dart';
 import 'package:eco_wise/data/bottomNave_data.dart';
-
 import 'package:eco_wise/model/icon_menu_model.dart';
 import 'package:eco_wise/screen/analytics_screen.dart';
 import 'package:eco_wise/screen/dashboard_widget.dart';
+import 'package:eco_wise/screen/devices_screen.dart';
 import 'package:eco_wise/screen/side_menu_widgets.dart';
 import 'package:eco_wise/screen/summary_widget.dart';
 
@@ -45,10 +44,10 @@ class _DashboardState extends State<Dashboard> {
         child: IndexedStack(
           index: _selectedIndex,
           children: [
-            DashboardWidget(), // ✅ Replace with actual dashboard screen
-    AnalyticsScreen(),
-  DeviceInputForm(),
-    AIRecommendationsScreen(),
+            DashboardWidget(),
+            LoggedDevices(), // ✅ Replace with actual dashboard screen
+            AnalyticsScreen(),
+            AIRecommendationsScreen(),
             
           ],
         ),

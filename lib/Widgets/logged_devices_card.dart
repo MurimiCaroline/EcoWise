@@ -1,14 +1,14 @@
 import 'package:eco_wise/Util/responsive.dart';
 import 'package:eco_wise/Widgets/custom_card_widget.dart';
-import 'package:eco_wise/data/energy_details.dart';
+import 'package:eco_wise/data/logged_devices.dart';
 import 'package:flutter/material.dart';
 
-class ActivityDetailsCard extends StatelessWidget {
-  const ActivityDetailsCard({super.key});
+class LoggedDevicesCard extends StatelessWidget {
+  const LoggedDevicesCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final energyDetails = EnergyDetails();
+    final energyDetails =LoggedDevicesData();
     
     return GridView.builder(
       itemCount: energyDetails.energyData.length,

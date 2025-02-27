@@ -20,7 +20,7 @@ class DashboardWidget extends StatelessWidget {
             const HeaderWidget(),
             const SizedBox(height: 18),
             const HostelName(),
-            // const ActivityDetailsCard(),
+           
             const SizedBox(height: 18),
             // const LineChartCard(),
             const SizedBox(height: 18),

@@ -14,6 +14,7 @@ class FormContainerWidget extends StatefulWidget {
   final FormFieldSetter<String>? onSaved;
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onFieldSubmitted;
+  
   final TextInputType? inputType;
 
   const FormContainerWidget({
@@ -61,7 +62,7 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
           border: InputBorder.none,
           filled: true,
           hintText: widget.hintText,
-          hintStyle: TextStyle(color: Colors.black45),
+          hintStyle: TextStyle(color: Colors.white),
           suffixIcon: GestureDetector(
             onTap: () {
               setState(() {
