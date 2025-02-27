@@ -1,14 +1,15 @@
+import 'package:eco_wise/Core/constants/colours.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
  
-class InsertData extends StatefulWidget {
-  const InsertData({Key? key}) : super(key: key);
+class DeviceInputForm extends StatefulWidget {
+  const DeviceInputForm({Key? key}) : super(key: key);
  
   @override
-  State<InsertData> createState() => _InsertDataState();
+  State<DeviceInputForm> createState() => _DeviceInputFormState();
 }
  
-class _InsertDataState extends State<InsertData> {
+class _DeviceInputFormState extends State<DeviceInputForm> {
   
   final  userNameController = TextEditingController();
   final  userAgeController= TextEditingController();
@@ -96,7 +97,7 @@ class _InsertDataState extends State<InsertData> {
  
                 },
                 child: const Text('Insert Data'),
-                color: Colors.blue,
+                color: cardBackgroundColor,
                 textColor: Colors.white,
                 minWidth: 300,
                 height: 40,

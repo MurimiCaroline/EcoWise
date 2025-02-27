@@ -1,8 +1,9 @@
 import 'package:eco_wise/Core/constants/colours.dart';
 import 'package:eco_wise/Util/responsive.dart';
 import 'package:eco_wise/Widgets/ai_recommendations_screen.dart';
+import 'package:eco_wise/Widgets/input_forn.dart';
 import 'package:eco_wise/data/bottomNave_data.dart';
-import 'package:eco_wise/data/insert_data.dart';
+
 import 'package:eco_wise/model/icon_menu_model.dart';
 import 'package:eco_wise/screen/analytics_screen.dart';
 import 'package:eco_wise/screen/dashboard_widget.dart';
@@ -46,7 +47,7 @@ class _DashboardState extends State<Dashboard> {
           children: [
             DashboardWidget(), // ✅ Replace with actual dashboard screen
     AnalyticsScreen(),
-  InsertData(),
+  DeviceInputForm(),
     AIRecommendationsScreen(),
             
           ],

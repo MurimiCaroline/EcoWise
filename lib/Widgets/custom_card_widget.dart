@@ -14,7 +14,7 @@ class CustomCard extends StatelessWidget {
         borderRadius: BorderRadius.all(
           Radius.circular(8.0),
         ),
-        color: color ?? cardBackgroundColor,
+        color: color ?? cardBackgroundColor
       ),
       child: Padding(
         padding: padding ?? EdgeInsets.all(8.0),
