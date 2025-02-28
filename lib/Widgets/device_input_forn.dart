@@ -1,5 +1,6 @@
 import 'package:eco_wise/Widgets/device_dropdown.dart';
 import 'package:eco_wise/Widgets/hosteldropdown.dart';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:eco_wise/Core/constants/dimensions.dart';
@@ -35,13 +36,13 @@ class _DeviceInputFormState extends State<DeviceInputForm> {
         left: 16,
         right: 16,
         top: 16,
-        bottom: MediaQuery.of(context).viewInsets.bottom + 16, // ✅ Adjusts for keyboard
+        bottom: MediaQuery.of(context).viewInsets.bottom + 16,
       ),
       child: SingleChildScrollView(
         child: Column(
-          mainAxisSize: MainAxisSize.min, // ✅ Ensures it doesn't take full screen height
+          mainAxisSize: MainAxisSize.min, 
           children: [
-            // ✅ Close Button (X) at the top
+           
             Align(
               alignment: Alignment.topRight,
               child: IconButton(
@@ -57,7 +58,8 @@ class _DeviceInputFormState extends State<DeviceInputForm> {
             ),
             const SizedBox(height: Dimensions.large),
 
-            HostelDropdown(controller: hostelNameController),
+            HostelDropdown(controller: hostelNameController, showOther: true), // ✅ Allows "Other"
+
             const SizedBox(height: Dimensions.large),
 
             DeviceDropdown(controller: applianceNameController),
@@ -66,8 +68,8 @@ class _DeviceInputFormState extends State<DeviceInputForm> {
             FormContainerWidget(
               controller: applianceRatingController,
               inputType: TextInputType.number,
-              labelText: 'Rating in KW',
-              hintText: 'Rating of Device KW',
+              labelText: 'Rating in W',
+              hintText: 'Rating of Device W',
             ),
             const SizedBox(height: Dimensions.large),
             FormContainerWidget(
@@ -83,7 +85,8 @@ class _DeviceInputFormState extends State<DeviceInputForm> {
             Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(.35),
+                color: Colors.grey.withAlpha((0.35 * 255).toInt()),
+
                 borderRadius: BorderRadius.circular(10),
               ),
               child: MaterialButton(

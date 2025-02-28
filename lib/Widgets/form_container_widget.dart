@@ -46,7 +46,8 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
       width: double.infinity,
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(.35),
+        color: Colors.grey.withAlpha((0.35 * 255).toInt()), // ✅ Corrected
+
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextFormField(

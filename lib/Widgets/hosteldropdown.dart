@@ -1,9 +1,13 @@
+import 'package:eco_wise/Services/hostel_database_services.dart';
 import 'package:flutter/material.dart';
 
-class HostelDropdown extends StatefulWidget {
-  final TextEditingController controller; // ✅ Stores the selected hostel name
 
-  const HostelDropdown({Key? key, required this.controller}) : super(key: key);
+class HostelDropdown extends StatefulWidget {
+  final TextEditingController controller;
+  final bool showOther;
+  final Function(String)? onChanged; // ✅ New callback function
+
+  const HostelDropdown({Key? key, required this.controller, this.showOther = true, this.onChanged}) : super(key: key);
 
   @override
   _HostelDropdownState createState() => _HostelDropdownState();
@@ -11,15 +15,25 @@ class HostelDropdown extends StatefulWidget {
 
 class _HostelDropdownState extends State<HostelDropdown> {
   String? selectedHostel;
-  bool showTextField = false; // ✅ Controls whether to show the input field
+  bool showTextField = false;
+  List<String> hostels = ["Loading..."];
 
-  final List<String> hostels = [
-    "Hostel A",
-    "Hostel B",
-    "Hostel C",
-    "Hostel D",
-    "Other",
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _loadHostels();
+  }
+
+  void _loadHostels() async {
+    List<String> fetchedHostels = await HostelDatabaseService().fetchHostelNames();
+    if (widget.showOther) {
+      fetchedHostels.add("Other");
+    }
+
+    setState(() {
+      hostels = fetchedHostels;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +43,9 @@ class _HostelDropdownState extends State<HostelDropdown> {
           value: selectedHostel,
           decoration: InputDecoration(
             labelText: "Select Hostel",
-            border: OutlineInputBorder(),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
           ),
           items: hostels.map((hostel) {
             return DropdownMenuItem<String>(
@@ -40,28 +56,11 @@ class _HostelDropdownState extends State<HostelDropdown> {
           onChanged: (newValue) {
             setState(() {
               selectedHostel = newValue;
-              if (newValue == "Other") {
-                showTextField = true; // ✅ Show input field for custom hostel name
-                widget.controller.clear(); // Clear the controller
-              } else {
-                showTextField = false;
-                widget.controller.text = newValue!; // ✅ Save selected hostel name
-              }
+              widget.controller.text = newValue!;
+              widget.onChanged?.call(newValue); // ✅ Notify `LoggedDevices`
             });
           },
         ),
-
-        if (showTextField) // ✅ Show text field only when "Other" is selected
-          Padding(
-            padding: EdgeInsets.only(top: 10),
-            child: TextFormField(
-              controller: widget.controller,
-              decoration: InputDecoration(
-                labelText: "Enter Hostel Name",
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ),
       ],
     );
   }
