@@ -1,7 +1,10 @@
+import 'package:eco_wise/Widgets/device_dropdown.dart';
+import 'package:eco_wise/Widgets/hosteldropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:eco_wise/Core/constants/dimensions.dart';
 import 'package:eco_wise/Widgets/form_container_widget.dart';
+
 
 class DeviceInputForm extends StatefulWidget {
   const DeviceInputForm({Key? key}) : super(key: key);
@@ -14,7 +17,7 @@ class _DeviceInputFormState extends State<DeviceInputForm> {
   final hostelNameController = TextEditingController();
   final applianceNameController = TextEditingController();
   final applianceRatingController = TextEditingController();
-  final dateController = TextEditingController();
+  
   final applianceNumberController = TextEditingController();
 
   late DatabaseReference dbRef;
@@ -54,20 +57,10 @@ class _DeviceInputFormState extends State<DeviceInputForm> {
             ),
             const SizedBox(height: Dimensions.large),
 
-            FormContainerWidget(
-              controller: hostelNameController,
-              labelText: 'Hostel A',
-              hintText: 'Hostel Name',
-              inputType: TextInputType.text,
-            ),
+            HostelDropdown(controller: hostelNameController),
             const SizedBox(height: Dimensions.large),
 
-            FormContainerWidget(
-              labelText: 'Device',
-              hintText: 'Device Name',
-              controller: applianceNameController,
-              inputType: TextInputType.text,
-            ),
+            DeviceDropdown(controller: applianceNameController),
             const SizedBox(height: Dimensions.large),
 
             FormContainerWidget(
@@ -84,13 +77,8 @@ class _DeviceInputFormState extends State<DeviceInputForm> {
               hintText: 'Number of Devices',
             ),
             const SizedBox(height: Dimensions.large),
-            FormContainerWidget(
-              controller: dateController,
-              labelText: 'Date',
-              hintText: 'Enter Date',
-              inputType: TextInputType.phone,
-            ),
-            const SizedBox(height: Dimensions.large),
+             
+            
 
             Container(
               width: double.infinity,
@@ -101,10 +89,10 @@ class _DeviceInputFormState extends State<DeviceInputForm> {
               child: MaterialButton(
                 onPressed: () {
                   Map<String, String> devices = {
-                    'Hostel A': hostelNameController.text,
+                    'Hostel Name': hostelNameController.text,
                     'Device': applianceNameController.text,
                     'Rating': applianceRatingController.text,
-                    'Date': dateController.text
+                    
                   };
 
                   dbRef.push().set(devices);
