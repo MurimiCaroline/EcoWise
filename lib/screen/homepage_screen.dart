@@ -9,20 +9,41 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("HomePage"),
+        title: Text(""),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
          Image(image: AssetImage('assets/images/ic_launcher.png'),
-         height: 200,
-         width: 200,
+         height: 300,
+         width: 300,
           ),
           
           Center(
-            child: Text("Welcome to Ecowise Home"),
-                  ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text(
+        "Welcome to Ecowise",
+        style: TextStyle(
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+      SizedBox(height: 15),
+      Text(
+        "Your Energy Management App", // Add your new text here
+        style: TextStyle(
+          fontSize: 16, // Adjust the font size as needed
+          color: Colors.white,
+        ),
+      ),
+              ],
+            ),
+            
+            ),
                   SizedBox(height: 40,),
                   // GestureDetector(
                   //   onTap: () {
@@ -62,7 +83,7 @@ class HomePage extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          "Proceed to  Energy Audit",
+                          "Energy Audit",
                           style: TextStyle(
                             color: Colors.white,
 

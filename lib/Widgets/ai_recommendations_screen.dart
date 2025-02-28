@@ -71,8 +71,7 @@ class _AIRecommendationsScreenState extends State<AIRecommendationsScreen> {
     }
 
     final String prompt = """
-    How do I save energy for $selectedHostel? Provide 5 points with a brief explanation. Here is the data from the hostel: $dataString
-  """;
+    How do I save energy for $selectedHostel? Provide 5 points with a brief explanation. Here is the data from the hostel: $dataString""";
 
     print("Sending prompt to Gemini API: $prompt");
 
