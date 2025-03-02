@@ -17,7 +17,7 @@ class EnergyModel {
       icon: _getImagePath(data["Device"] ?? ""), // ✅ Get image based on device name
       value: "${data["Rating"] ?? "0"}W", // ✅ Convert to "W" format
       title: data["Device"] ?? "Unknown Device",
-      count: int.tryParse(data["Number"] ?? "1") ?? 1, // ✅ Handle count
+      count: int.tryParse(data["Number of Devices"] ?? "1") ?? 1, // ✅ Handle count
     );
   }
 
@@ -28,6 +28,11 @@ class EnergyModel {
       "Laptop Charger": "assets/images/laptopcharger.jpg",
       "Electric Kettle": "assets/images/electrickettle.jpg",
       "Immersion Heater": "assets/images/immersionheater.jpg",
+       "Fluorescent Bulbs": "assets/images/bulb.jpg",
+     "Radio" : "assets/images/radio.jpg",
+     "Sound Woofer" : "assets/images/radio.jpg",
+    "Iron Box" : "assets/images/ironbox.jpg",
+
     };
     return images[device] ?? "assets/images/default.png"; // ✅ Default image if not found
   }

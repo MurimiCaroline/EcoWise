@@ -1,13 +1,13 @@
-import 'package:eco_wise/Services/hostel_database_services.dart';
 import 'package:flutter/material.dart';
-
+import 'package:eco_wise/services/hostel_database_services.dart';
 
 class HostelDropdown extends StatefulWidget {
   final TextEditingController controller;
   final bool showOther;
-  final Function(String)? onChanged; // ✅ New callback function
+  final Function(String)? onChanged;
 
-  const HostelDropdown({Key? key, required this.controller, this.showOther = true, this.onChanged}) : super(key: key);
+  const HostelDropdown({Key? key, required this.controller, this.showOther = true, this.onChanged})
+      : super(key: key);
 
   @override
   _HostelDropdownState createState() => _HostelDropdownState();
@@ -15,7 +15,6 @@ class HostelDropdown extends StatefulWidget {
 
 class _HostelDropdownState extends State<HostelDropdown> {
   String? selectedHostel;
-  bool showTextField = false;
   List<String> hostels = ["Loading..."];
 
   @override
@@ -37,31 +36,42 @@ class _HostelDropdownState extends State<HostelDropdown> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        DropdownButtonFormField<String>(
-          value: selectedHostel,
-          decoration: InputDecoration(
-            labelText: "Select Hostel",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
+    return Container(
+      width: double.infinity, // ✅ Full width
+      decoration: BoxDecoration(
+        color: Colors.grey.withAlpha((0.35 * 255).toInt()),
+        borderRadius: BorderRadius.circular(10), // ✅ Rounded edges
+      ),
+      child: DropdownButtonFormField<String>(
+        value: selectedHostel,
+        decoration: InputDecoration(
+          labelText: "Select Hostel",
+          contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10), // ✅ Match DeviceDropdown
           ),
-          items: hostels.map((hostel) {
-            return DropdownMenuItem<String>(
-              value: hostel,
-              child: Text(hostel),
-            );
-          }).toList(),
-          onChanged: (newValue) {
-            setState(() {
-              selectedHostel = newValue;
-              widget.controller.text = newValue!;
-              widget.onChanged?.call(newValue); // ✅ Notify `LoggedDevices`
-            });
-          },
         ),
-      ],
+        dropdownColor: Colors.grey.withAlpha((0.35 * 255).toInt()),
+        items: hostels.map((hostel) {
+          return DropdownMenuItem<String>(
+            value: hostel,
+            child: Row(
+              children: [
+                Icon(Icons.apartment, color: Colors.white), // ✅ Optional icon
+                SizedBox(width: 10),
+                Text(hostel, style: TextStyle(color: Colors.white)),
+              ],
+            ),
+          );
+        }).toList(),
+        onChanged: (newValue) {
+          setState(() {
+            selectedHostel = newValue;
+            widget.controller.text = newValue!;
+            widget.onChanged?.call(newValue);
+          });
+        },
+      ),
     );
   }
 }

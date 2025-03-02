@@ -1,7 +1,7 @@
 import 'package:eco_wise/Core/constants/colours.dart';
 import 'package:eco_wise/Core/constants/dimensions.dart';
+import 'package:eco_wise/Validators/validated_hostel_dropdown.dart';
 import 'package:eco_wise/Widgets/device_input_forn.dart';
-import 'package:eco_wise/Widgets/hosteldropdown.dart';
 import 'package:eco_wise/Widgets/logged_devices_card.dart';
 import 'package:flutter/material.dart';
 
@@ -27,17 +27,19 @@ class _LoggedDevicesState extends State<LoggedDevices> {
             Text("List of Logged Devices"),
             SizedBox(height: Dimensions.extralarge),
 
-            // ✅ Use hostel drop-down with onChanged callback
-            HostelDropdown(
-              controller: TextEditingController(text: selectedHostel.value),
-              showOther: false,
-              onChanged: (value) {
-                selectedHostel.value = value; // ✅ Update hostel dynamically
-              },
-            ),
+            SizedBox(
+  width: MediaQuery.of(context).size.width * 0.6, // ✅ Reduce width to 60% of screen
+  child: ValidatedHostelDropdown(
+    controller: TextEditingController(text: selectedHostel.value),
+    allowOther: false, // ✅ No "Other" option
+    onChanged: (value) {
+      selectedHostel.value = value; // ✅ Updates UI dynamically
+    },
+  ),
+),
             SizedBox(height: Dimensions.extralarge),
 
-            // ✅ Update LoggedDevicesCard when hostel changes
+            // ✅ Updates `LoggedDevicesCard` when hostel changes
             ValueListenableBuilder<String>(
               valueListenable: selectedHostel,
               builder: (context, hostel, child) {

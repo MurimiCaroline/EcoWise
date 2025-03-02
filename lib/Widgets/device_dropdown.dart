@@ -1,3 +1,4 @@
+import 'package:eco_wise/Core/constants/colours.dart';
 import 'package:flutter/material.dart';
 
 class DeviceDropdown extends StatefulWidget {
@@ -18,9 +19,9 @@ class _DeviceDropdownState extends State<DeviceDropdown> {
     {"name": "Electric Kettle", "image": "assets/images/electrickettle.jpg"},
     {"name": "Immersion Heater", "image": "assets/images/immersionheater.jpg"},
     {"name": "Fluorescent Bulbs", "image": "assets/images/bulb.jpg"},
-    {"name": "Radios", "image": "assets/images/radio.jpg"},
+    {"name": "Radio", "image": "assets/images/radio.jpg"},
     {"name": "Sound Woofer", "image": "assets/images/radio.jpg"},
-    {"name": "Iron Box", "image": "assets/images/ironbox.jpg"},
+    {"name": "IronBox", "image": "assets/images/ironbox.jpg"},
 
   ];
 
@@ -31,8 +32,10 @@ class _DeviceDropdownState extends State<DeviceDropdown> {
       decoration: InputDecoration(
         labelText: "Select a Device",
         border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10), // ✅ Rounded edges
+      borderRadius: BorderRadius.circular(10),
+      
     ),
+    fillColor: cardBackgroundColor,
       ),
       items: devices.map((device) {
         return DropdownMenuItem<String>(
