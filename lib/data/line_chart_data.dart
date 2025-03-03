@@ -1,67 +1,57 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 class LineData {
-  final spots = const [
-    FlSpot(1.68, 21.04),
-    FlSpot(2.84, 26.23),
-    FlSpot(5.19, 19.82),
-    FlSpot(6.01, 24.49),
-    FlSpot(7.81, 19.82),
-    FlSpot(9.49, 23.50),
-    FlSpot(12.26, 19.57),
-    FlSpot(15.63, 20.90),
-    FlSpot(20.39, 39.20),
-    FlSpot(23.69, 75.62),
-    FlSpot(26.21, 46.58),
-    FlSpot(29.87, 42.97),
-    FlSpot(32.49, 46.54),
-    FlSpot(35.09, 40.72),
-    FlSpot(38.74, 43.18),
-    FlSpot(41.47, 59.91),
-    FlSpot(43.12, 53.18),
-    FlSpot(46.30, 90.10),
-    FlSpot(47.88, 81.59),
-    FlSpot(51.71, 75.53),
-    FlSpot(54.21, 78.95),
-    FlSpot(55.23, 86.94),
-    FlSpot(57.40, 78.98),
-    FlSpot(60.49, 74.38),
-    FlSpot(64.30, 48.34),
-    FlSpot(67.17, 70.74),
-    FlSpot(70.35, 75.43),
-    FlSpot(73.39, 69.88),
-    FlSpot(75.87, 80.04),
-    FlSpot(77.32, 74.38),
-    FlSpot(81.43, 68.43),
-    FlSpot(86.12, 69.45),
-    FlSpot(90.06, 78.60),
-    FlSpot(94.68, 46.05),
-    FlSpot(98.35, 42.80),
-    FlSpot(101.25, 53.05),
-    FlSpot(103.07, 46.06),
-    FlSpot(106.65, 42.31),
-    FlSpot(108.20, 32.64),
-    FlSpot(110.40, 45.14),
-    FlSpot(114.24, 53.27),
-    FlSpot(116.60, 42.13),
-    FlSpot(118.52, 57.60),
-  ];
+  List<FlSpot> spots = [];
+  Map<int, String> bottomTitle = {};
+  Map<int, String> leftTitle = {
+    220: '220kW',
+    240: '240kW',
+    260: '260kW',
+    280: '280kW',
+    300: '300kW',
+  };
 
-  final leftTitle = {
-    0: '0',
-    20: '2K',
-    40: '4K',
-    60: '6K',
-    80: '8K',
-    100: '10K'
-  };
-  final bottomTitle = {
-    0: 'Mon',
-    20: 'Tue',
-    40: 'Wed',
-    60: 'Thur',
-    80: 'Fri',
-    100: 'Sat',
+  Future<void> fetchDataForWeek(String selectedWeek) async {
+    DatabaseReference dbRef = FirebaseDatabase.instance.ref().child('ConsumptionData');
+
+    DatabaseEvent event = await dbRef.once();
+    if (!event.snapshot.exists) return;
+
+    Map<dynamic, dynamic>? data = event.snapshot.value as Map?;
+    if (data == null) return;
+
+    List<FlSpot> newSpots = [];
+    Map<int, String> newBottomTitle = {};
     
-  };
+    List<String> weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+    
+    data.forEach((key, value) {
+      String date = value["Date"] ?? "";
+      double current = double.tryParse(value["Current"] ?? "0") ?? 0;
+      double voltage = double.tryParse(value["Voltage"] ?? "0") ?? 0;
+      double powerFactor = double.tryParse(value["Power Factor"] ?? "0") ?? 0;
+
+      if (date.isNotEmpty && date.compareTo("2025-01-06") >= 0 && date.startsWith(selectedWeek)) {
+        double consumption = current * voltage * powerFactor * 24;
+
+        // ✅ Convert Date to Weekday Index (0=Mon, 1=Tue, ...)
+        DateTime parsedDate = DateTime.parse(date);
+        int weekdayIndex = parsedDate.weekday - 1;  
+
+        // ✅ Ensure we are only adding Mon-Fri (ignore Sat & Sun)
+        if (weekdayIndex < 5) {
+          newSpots.add(FlSpot(weekdayIndex.toDouble(), consumption));
+
+          // ✅ Map correct weekday label
+          newBottomTitle[weekdayIndex] = weekdays[weekdayIndex];
+
+          print("📌 Added Data: X=$weekdayIndex, Y=$consumption, Label=${newBottomTitle[weekdayIndex]}");
+        }
+      }
+    });
+
+    spots = newSpots;
+    bottomTitle = newBottomTitle;
+  }
 }

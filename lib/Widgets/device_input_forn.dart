@@ -102,8 +102,7 @@ class _DeviceInputFormState extends State<DeviceInputForm> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: Dimensions.large),
-
-              // ✅ Wrap `ValidatedHostelDropdown` with FormField to validate it
+             
               FormField<String>(
                 validator: (value) {
                   if (hostelNameController.text.isEmpty) {

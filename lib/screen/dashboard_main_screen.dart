@@ -8,10 +8,8 @@ import 'package:eco_wise/screen/dashboard_widget.dart';
 import 'package:eco_wise/screen/logged_devices_screen.dart';
 import 'package:eco_wise/screen/side_menu_widgets.dart';
 import 'package:eco_wise/screen/summary_widget.dart';
-
-
-
 import 'package:flutter/material.dart';
+
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});

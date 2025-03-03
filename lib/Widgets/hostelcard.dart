@@ -6,7 +6,7 @@ class HostelName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Hostel A"),
+      child: Text("Hostel A and B"),
     );
   }
 }
