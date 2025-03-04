@@ -19,6 +19,7 @@ class _DeviceInputFormState extends State<DeviceInputForm> {
   final applianceNameController = TextEditingController();
   final applianceRatingController = TextEditingController();
   final applianceNumberController = TextEditingController();
+  final applianceDurationController = TextEditingController();
 
   late DatabaseReference dbRef;
 
@@ -28,7 +29,7 @@ class _DeviceInputFormState extends State<DeviceInputForm> {
     dbRef = FirebaseDatabase.instance.ref().child('Devices');
   }
 
-  void _submitForm() async {
+ void _submitForm() async {
   if (!_formKey.currentState!.validate()) return;
 
   bool? confirm = await showDialog(
@@ -52,14 +53,15 @@ class _DeviceInputFormState extends State<DeviceInputForm> {
   );
 
   if (confirm == true) {
-    // ✅ Only proceed if user confirmed
     try {
       await dbRef.push().set({
         'Hostel Name': hostelNameController.text,
         'Device': applianceNameController.text,
         'Rating': applianceRatingController.text,
         'Number of Devices': applianceNumberController.text,
+        'Daily usage in hours': applianceDurationController.text, // ✅ Fixed
       });
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Device Added Successfully!"), backgroundColor: Colors.green),
       );
@@ -68,11 +70,12 @@ class _DeviceInputFormState extends State<DeviceInputForm> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Failed to add device! Try again."), backgroundColor: Colors.red),
       );
+      print("🔥 Firebase Error: $e"); // ✅ Debugging print statement
     }
   }
 }
 
-  
+
    @override
   Widget build(BuildContext context) {
     return Padding(
@@ -188,6 +191,21 @@ class _DeviceInputFormState extends State<DeviceInputForm> {
                 },
               ),
               const SizedBox(height: Dimensions.large),
+              FormContainerWidget(
+  controller: applianceDurationController, // ✅ New Controller
+  inputType: TextInputType.number,
+  labelText: 'Daily usage in hours',
+  hintText: 'Daily usage in hours',
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return "Please enter the duration of use";
+    }
+    return null;
+  },
+),
+
+              const SizedBox(height: Dimensions.large),
+
 
               Container(
                 width: double.infinity,

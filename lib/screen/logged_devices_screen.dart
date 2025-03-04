@@ -18,39 +18,42 @@ class _LoggedDevicesState extends State<LoggedDevices> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(Dimensions.medium),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text("List of Logged Devices"),
-            SizedBox(height: Dimensions.extralarge),
+     body: Padding(
+  padding: const EdgeInsets.all(Dimensions.medium),
+  child: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Text("List of Logged Devices"),
+      SizedBox(height: Dimensions.extralarge),
 
-            SizedBox(
-  width: MediaQuery.of(context).size.width * 0.6, // ✅ Reduce width to 60% of screen
-  child: ValidatedHostelDropdown(
-    controller: TextEditingController(text: selectedHostel.value),
-    allowOther: false, // ✅ No "Other" option
-    onChanged: (value) {
-      selectedHostel.value = value; // ✅ Updates UI dynamically
-    },
-  ),
-),
-            SizedBox(height: Dimensions.extralarge),
-
-            // ✅ Updates `LoggedDevicesCard` when hostel changes
-            ValueListenableBuilder<String>(
-              valueListenable: selectedHostel,
-              builder: (context, hostel, child) {
-                return LoggedDevicesCard(selectedHostel: hostel);
-              },
-            ),
-          ],
+      SizedBox(
+        width: MediaQuery.of(context).size.width * 0.6,
+        child: ValidatedHostelDropdown(
+          controller: TextEditingController(text: selectedHostel.value),
+          allowOther: false,
+          onChanged: (value) {
+            selectedHostel.value = value;
+          },
         ),
       ),
+      SizedBox(height: Dimensions.extralarge),
 
-      floatingActionButton: FloatingActionButton(
+      // ✅ Wrap with Expanded & SingleChildScrollView to prevent overflow
+      Expanded(
+        child: SingleChildScrollView(
+          child: ValueListenableBuilder<String>(
+            valueListenable: selectedHostel,
+            builder: (context, hostel, child) {
+              return LoggedDevicesCard(selectedHostel: hostel);
+            },
+          ),
+        ),
+      ),
+    ],
+  ),
+),
+ floatingActionButton: FloatingActionButton(
         onPressed: () {
           showGeneralDialog(
             context: context,
